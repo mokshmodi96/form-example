@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
-import LoginForm from './components/LoginForm';
-import SignupForm from './components/SignupForm';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import AuthPage from './pages/AuthPage';
+import Dashboard from './pages/Dashboard';
+import { auth } from './utils/auth';
+
+function ProtectedRoute({ children }) {
+    return auth.isAuthenticated ? children : <Navigate to="/" />;
+}
 
 function App() {
-  const [isLogin, setIsLogin] = useState(true);
-
-  return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
-      {isLogin ? <LoginForm /> : <SignupForm />}
-      <p>
-        {isLogin ? "Don't have an account?" : 'Already have an account?'}{' '}
-        <button onClick={() => setIsLogin(!isLogin)}>
-          {isLogin ? 'Sign Up' : 'Login'}
-        </button>
-      </p>
-    </div>
-  );
+    return (
+        <Routes>
+            <Route path="/" element={<AuthPage />} />
+            <Route
+                path="/dashboard"
+                element={
+                    <ProtectedRoute>
+                        <Dashboard />
+                    </ProtectedRoute>
+                }
+            />
+        </Routes>
+    );
 }
 
 export default App;
