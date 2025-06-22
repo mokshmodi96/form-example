@@ -1,6 +1,7 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import {Routes, Route, Navigate} from 'react-router-dom';
 import AuthPage from './pages/AuthPage';
 import Dashboard from './pages/Dashboard';
+import Store from './pages/Store';
 import { auth } from './utils/auth';
 
 function ProtectedRoute({ children }) {
@@ -11,14 +12,8 @@ function App() {
     return (
         <Routes>
             <Route path="/" element={<AuthPage />} />
-            <Route
-                path="/dashboard"
-                element={
-                    <ProtectedRoute>
-                        <Dashboard />
-                    </ProtectedRoute>
-                }
-            />
+            <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+            <Route path="/store" element={<ProtectedRoute><Store /></ProtectedRoute>} />
         </Routes>
     );
 }
