@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container, Grid, Typography } from '@mui/material';
 import ProductCard from '../components/ProductCard';
 import products from '../data/products';

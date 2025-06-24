@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../utils/auth';
-import {Button} from "@mui/material";
+import {Button, Stack} from "@mui/material";
 
 const Dashboard = () => {
     const [posts, setPosts] = useState([]);
@@ -20,10 +20,12 @@ const Dashboard = () => {
     return (
         <div className="container mt-5">
             <h2 className="text-center">Dashboard</h2>
-            <button className="btn btn-danger mb-4" onClick={handleLogout}>Logout</button>
-            <Button variant="outlined" onClick={() => navigate('/store')}>
+            <Stack direction="row" spacing={2} justifyContent="center" sx={{ marginBottom: 2 }}>
+            <Button onClick={handleLogout}>Logout</Button>
+            <Button variant="outlined" onClick={() => navigate('/store')} sx={{ marginBottom: 2 }}>
                 Go to Store
             </Button>
+            </Stack>
 
             <ul className="list-group">
                 {posts.map(post => (
