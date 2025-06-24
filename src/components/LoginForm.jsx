@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../utils/auth';
+import {Button} from "@mui/material";
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
@@ -18,7 +19,7 @@ const LoginForm = () => {
             <br /><br />
             <input type="password" placeholder="Password" required value={password} onChange={e => setPassword(e.target.value)} />
             <br /><br />
-            <button type="submit">Login</button>
+            <Button variant='contained' type="submit">Login</Button>
         </form>
     );
 };

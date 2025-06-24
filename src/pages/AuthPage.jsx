@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
+import {Button} from "@mui/material";
 
 const AuthPage = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -11,9 +12,9 @@ const AuthPage = () => {
             {isLogin ? <LoginForm /> : <SignupForm />}
             <p>
                 {isLogin ? "Don't have an account?" : 'Already have an account?'}{' '}
-                <button onClick={() => setIsLogin(!isLogin)}>
+                <Button variant='text' onClick={() => setIsLogin(!isLogin)}>
                     {isLogin ? 'Sign Up' : 'Login'}
-                </button>
+                </Button>
             </p>
         </div>
     );

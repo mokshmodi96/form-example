@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../utils/auth';
+import {Button} from "@mui/material";
 
 const SignupForm = () => {
     const [name, setName] = useState('');
@@ -10,8 +11,6 @@ const SignupForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-
-        // Simulate account creation + login
         console.log(`Created user: ${name}, ${email}`);
         auth.login(() => navigate('/dashboard'));
     };
@@ -42,7 +41,7 @@ const SignupForm = () => {
                 onChange={e => setPassword(e.target.value)}
             />
             <br /><br />
-            <button type="submit">Sign Up</button>
+            <Button variant='contained' type='submit'>Sign Up</Button>
         </form>
     );
 };
