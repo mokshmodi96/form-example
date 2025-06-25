@@ -4,6 +4,7 @@ import useCartStore from '../store/cartStore';
 
 const ProductCard = ({ product }) => {
     const addToCart = useCartStore(state => state.addToCart);
+    const cart = useCartStore(state => state.cart);
     return (
         <Card sx={{ maxWidth: 250, margin: 2 }}>
             <CardMedia component="img" height="140" image={product.image} alt={product.name} />
@@ -12,7 +13,7 @@ const ProductCard = ({ product }) => {
                 <Typography variant="body2" color="text.secondary">₹{product.price}</Typography>
             </CardContent>
             <CardActions>
-                <Button size="small" variant="contained" onClick={() => addToCart(product)}>
+                <Button size="small" variant="contained" onClick={() => addToCart(product)} disabled={cart.find(item => item.id === product.id)}>
                     Add to Cart
                 </Button>
             </CardActions>
