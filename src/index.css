@@ -23,34 +23,10 @@ input {
   font-size: 16px;
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4f46e5;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-button:hover {
-  background-color: #3730a3;
-}
-
 h1 {
   color: #333;
 }
 
 p {
   margin-top: 20px;
-}
-
-p button {
-  background: none;
-  color: #4f46e5;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  text-decoration: underline;
 }

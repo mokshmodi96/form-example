@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../utils/auth";
+import { Button } from "@mui/material";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Logging in with ${email} / ${password}`);
+    auth.login(() => navigate("/dashboard"));
   };
 
   return (
@@ -14,20 +18,24 @@ const LoginForm = () => {
       <input
         type="email"
         placeholder="Email"
-        value={email}
         required
-        onChange={e => setEmail(e.target.value)}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
-      <br /><br />
+      <br />
+      <br />
       <input
         type="password"
         placeholder="Password"
-        value={password}
         required
-        onChange={e => setPassword(e.target.value)}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
-      <br /><br />
-      <button type="submit">Login</button>
+      <br />
+      <br />
+      <Button variant="contained" type="submit">
+        Login
+      </Button>
     </form>
   );
 };
