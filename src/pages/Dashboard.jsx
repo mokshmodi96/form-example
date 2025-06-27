@@ -27,7 +27,7 @@ const Dashboard = () => {
         alignItems="center"
         sx={{ marginBottom: 2 }}
       >
-        <Button variant="outlined" onClick={() => navigate("/store")}>
+        <Button variant="outlined" onClick={() => navigate("/products")}>
           Go to Store
         </Button>
         <Button onClick={handleLogout}>Logout</Button>

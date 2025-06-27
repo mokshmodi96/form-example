@@ -6,6 +6,7 @@ import Cart from "./pages/Cart.jsx";
 import NavBar from "./components/NavBar.jsx";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthProvider";
+import ProductDetails from "./pages/ProductDetails.jsx";
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useContext(AuthContext);
@@ -32,7 +33,7 @@ function App() {
         }
       />
       <Route
-        path="/store"
+        path="/products"
         element={
           <ProtectedRoute>
             <Store />
@@ -44,6 +45,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Cart />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/products/:id"
+        element={
+          <ProtectedRoute>
+            <ProductDetails />
           </ProtectedRoute>
         }
       />
