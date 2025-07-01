@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../utils/auth";
 import { Button, Stack, Typography } from "@mui/material";
+import { AuthContext } from "../context/AuthProvider.jsx";
 
 const Dashboard = () => {
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
+  const { logout } = useContext(AuthContext);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts?_limit=5")
@@ -14,7 +15,7 @@ const Dashboard = () => {
   }, []);
 
   const handleLogout = () => {
-    auth.logout(() => navigate("/"));
+    logout(() => navigate("/"));
   };
 
   return (
@@ -26,7 +27,7 @@ const Dashboard = () => {
         alignItems="center"
         sx={{ marginBottom: 2 }}
       >
-        <Button variant="outlined" onClick={() => navigate("/store")}>
+        <Button variant="outlined" onClick={() => navigate("/products")}>
           Go to Store
         </Button>
         <Button onClick={handleLogout}>Logout</Button>

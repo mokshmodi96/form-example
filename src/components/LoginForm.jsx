@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../utils/auth";
 import { Button } from "@mui/material";
+import { AuthContext } from "../context/AuthProvider.jsx";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    auth.login(() => navigate("/dashboard"));
+    login(() => navigate("/dashboard"));
   };
 
   return (

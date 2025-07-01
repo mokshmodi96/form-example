@@ -19,7 +19,7 @@ const NavBar = () => {
           E-Commerce App
         </Typography>
         <Box>
-          <Button color="inherit" component={Link} to="/store">
+          <Button color="inherit" component={Link} to="/products">
             Store
           </Button>
           <Button color="inherit" component={Link} to="/cart">
