@@ -9,12 +9,13 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null);
   const addToCart = useCartStore((state) => state.addToCart);
 
+  console.log(typeof id, id);
   useEffect(() => {
     const found = products.find((p) => p.id === parseInt(id));
     setProduct(found);
   }, [id]);
 
-  if (!product) return <div>Loading...</div>;
+  if (!product) return <div>Error Product not found...</div>;
 
   return (
     <Container sx={{ mt: 4 }}>
