@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useCartStore from "../store/cartStore";
 
 const NavBar = () => {
-  const cartCount = useCartStore((state) => state.cart.length);
+  const cart = useCartStore((state) => state.cart);
   const navigate = useNavigate();
 
   return (
@@ -23,7 +23,7 @@ const NavBar = () => {
             Store
           </Button>
           <Button color="inherit" component={Link} to="/cart">
-            Cart ({cartCount})
+            Cart ({cart?.reduce((acc, item) => acc + item.quantity, 0)})
           </Button>
         </Box>
       </Toolbar>

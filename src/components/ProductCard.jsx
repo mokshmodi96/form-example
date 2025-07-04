@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const addToCart = useCartStore((state) => state.addToCart);
-  const cart = useCartStore((state) => state.cart);
   return (
     <Card sx={{ maxWidth: 250, margin: 2 }}>
       <CardMedia
@@ -38,7 +37,6 @@ const ProductCard = ({ product }) => {
           size="small"
           variant="contained"
           onClick={() => addToCart(product)}
-          disabled={cart.find((item) => item.id === product.id)}
         >
           Add to Cart
         </Button>
